@@ -80,13 +80,14 @@ namespace Import_Excel_SqlDB_MVC.Controllers
                     using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(con))
                     {
                         //Set the database table name.
-                        sqlBulkCopy.DestinationTableName = "dbo.Customers";
+                        sqlBulkCopy.DestinationTableName = "dbo.country";
 
                         //[OPTIONAL]: Map the Excel columns with that of the database table
-                        sqlBulkCopy.ColumnMappings.Add("Id", "CustomerId");
-                        sqlBulkCopy.ColumnMappings.Add("Name", "Name");
+                        sqlBulkCopy.ColumnMappings.Add("Rank", "Rank");
                         sqlBulkCopy.ColumnMappings.Add("Country", "Country");
-
+                        sqlBulkCopy.ColumnMappings.Add("Population", "Population");
+                        sqlBulkCopy.ColumnMappings.Add("Date", "Date");
+                        sqlBulkCopy.ColumnMappings.Add("populationPersent", "populationPersent");
                         con.Open();
                         sqlBulkCopy.WriteToServer(dt);
                         con.Close();
